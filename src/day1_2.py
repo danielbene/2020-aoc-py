@@ -1,24 +1,26 @@
 from util import iohandler
 
-inputFile = iohandler.begin(__file__)
+# --- solution ---
+
+
+def init(input_file):
+    report = list()
+    for e in input_file:
+        report.append(int(e.strip()))
+    return report
+
+
+def find_entry_triplet(report_list):
+    for entry in report_list:
+        diff = 2020 - entry
+        for i_entry in report_list:
+            i_diff = diff - i_entry
+            if i_diff in report_list:
+                return entry * i_entry * i_diff
+
 
 # --- solution ---
 
-report = list()
-e1, e2, e3 = 0, 0, 0
-
-for entry in inputFile:
-    report.append(int(entry.strip()))
-
-for entry in report:
-    diff = 2020 - entry
-    for iEntry in report:
-        iDiff = diff - iEntry
-        if iDiff in report:
-            e1 = entry
-            e2 = iEntry
-            e3 = iDiff
-
-# --- solution ---
-
-iohandler.end(str(e1*e2*e3))
+if __name__ == '__main__':
+    input_list = init(iohandler.begin(__file__))
+    iohandler.end(str(find_entry_triplet(input_list)))

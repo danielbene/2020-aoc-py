@@ -1,21 +1,26 @@
 from util import iohandler
 
-inputFile = iohandler.begin(__file__)
+# --- solution ---
+
+
+def init(input_file):
+    report = list()
+    for e in input_file:
+        report.append(int(e.strip()))
+    return report
+
+
+def find_entry_pair(report_list):
+    for entry in report_list:
+        diff = 2020 - entry
+        if diff in report_list:
+            return entry * diff
+
 
 # --- solution ---
 
-report = list()
-e1, e2 = 0, 0
-
-for entry in inputFile:
-    report.append(int(entry.strip()))
-
-for entry in report:
-    diff = 2020 - entry
-    if diff in report:
-        e1 = entry
-        e2 = diff
-
-# --- solution ---
-
-iohandler.end(str(e1*e2))
+# unittests calls global script parts, so we need to avoid reruning the evaluation
+# by telling it to only run this, if running the srcipt directly
+if __name__ == '__main__':
+    input_list = init(iohandler.begin(__file__))
+    iohandler.end(str(find_entry_pair(input_list)))
