@@ -19,3 +19,9 @@ class Test(TestCase):
         input_list = ['1-3 a: abcde', '1-3 b: cdefg', '2-9 c: ccccccccc']
         correct_answer = 2
         self.assertTrue(sum_of_correct_passwords(input_list) == correct_answer)
+
+    def test_sum_of_correct_passwords_by_pos(self):
+        from src.day2_2 import sum_of_correct_passwords_by_pos
+        input_list = ['1-3 a: abcde', '1-3 b: cdefg', '2-9 c: ccccccccc']
+        correct_answer = 1
+        self.assertTrue(sum_of_correct_passwords_by_pos(input_list) == correct_answer)
