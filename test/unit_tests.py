@@ -13,3 +13,9 @@ class Test(TestCase):
         input_list = [1721, 979, 366, 299, 675, 1456]
         correct_answer = 241861950
         self.assertTrue(find_entry_triplet(input_list) == correct_answer)
+
+    def test_sum_of_correct_passwords(self):
+        from src.day2_1 import sum_of_correct_passwords
+        input_list = ['1-3 a: abcde', '1-3 b: cdefg', '2-9 c: ccccccccc']
+        correct_answer = 2
+        self.assertTrue(sum_of_correct_passwords(input_list) == correct_answer)
