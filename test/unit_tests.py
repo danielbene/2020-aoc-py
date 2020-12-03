@@ -42,3 +42,20 @@ class Test(TestCase):
             '.#..#...#.#']
         correct_answer = 7
         self.assertTrue(sum_of_trees_in_the_slope(input_list) == correct_answer)
+
+    def test_multiplied_tree_probabilities(self):
+        from src.day3_2 import multiplied_tree_probabilities
+        input_list = [
+            '..##.......',
+            '#...#...#..',
+            '.#....#..#.',
+            '..#.#...#.#',
+            '.#...##..#.',
+            '..#.##.....',
+            '.#.#.#....#',
+            '.#........#',
+            '#.##...#...',
+            '#...##....#',
+            '.#..#...#.#']
+        correct_answer = 336
+        self.assertTrue(multiplied_tree_probabilities(input_list) == correct_answer)
