@@ -25,3 +25,37 @@ class Test(TestCase):
         input_list = ['1-3 a: abcde', '1-3 b: cdefg', '2-9 c: ccccccccc']
         correct_answer = 1
         self.assertTrue(sum_of_correct_passwords_by_pos(input_list) == correct_answer)
+
+    def test_sum_of_trees_in_the_slope(self):
+        from src.day3_1 import sum_of_trees_in_the_slope
+        input_list = [
+            '..##.......',
+            '#...#...#..',
+            '.#....#..#.',
+            '..#.#...#.#',
+            '.#...##..#.',
+            '..#.##.....',
+            '.#.#.#....#',
+            '.#........#',
+            '#.##...#...',
+            '#...##....#',
+            '.#..#...#.#']
+        correct_answer = 7
+        self.assertTrue(sum_of_trees_in_the_slope(input_list) == correct_answer)
+
+    def test_multiplied_tree_probabilities(self):
+        from src.day3_2 import multiplied_tree_probabilities
+        input_list = [
+            '..##.......',
+            '#...#...#..',
+            '.#....#..#.',
+            '..#.#...#.#',
+            '.#...##..#.',
+            '..#.##.....',
+            '.#.#.#....#',
+            '.#........#',
+            '#.##...#...',
+            '#...##....#',
+            '.#..#...#.#']
+        correct_answer = 336
+        self.assertTrue(multiplied_tree_probabilities(input_list) == correct_answer)
