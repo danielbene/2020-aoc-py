@@ -75,7 +75,6 @@ class Test(TestCase):
             'hgt:179cm\n',
             '\n',
             'hcl:#cfa07d eyr:2025 pid:166559648\n',
-            'iyr:2011 ecl:brn hgt:59in\n',
-            '\n']
+            'iyr:2011 ecl:brn hgt:59in\n']
         correct_answer = 2
         self.assertTrue(num_of_valid_passports(input_list) == correct_answer)

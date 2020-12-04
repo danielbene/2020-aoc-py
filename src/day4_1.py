@@ -9,12 +9,13 @@ def init(input_file):
     passports = list()
     passport = str()
     for line in input_file:
-        if line != '\n':  # double blank line at the end of input is important
+        if line != '\n':
             passport += line.replace('\n', ' ')
         else:
             passports.append(passport.strip())
             passport = ''
 
+    passports.append(passport.strip())  # handling last line if no nl in the end of file
     return passports
 
 
