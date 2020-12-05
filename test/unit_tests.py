@@ -112,3 +112,10 @@ class Test(TestCase):
             self.assertEqual(num_of_valid_passports_by_rules(invalid_input_list), 0)
         with self.subTest():
             self.assertEqual(num_of_valid_passports_by_rules(valid_input_list), 4)
+
+    def test_calculate_binary_seat_partition(self):
+        from src.day5_1 import calculate_binary_seat_partition
+        values = [['FBFBBFFRLR', 357], ['BFFFBBFRRR', 567], ['FFFBBBFRRR', 119], ['BBFFBBFRLL', 820]]
+        for seat in values:
+            with self.subTest():
+                self.assertEqual(calculate_binary_seat_partition(seat[0]), seat[1])
