@@ -119,3 +119,24 @@ class Test(TestCase):
         for seat in values:
             with self.subTest():
                 self.assertEqual(calculate_binary_seat_partition(seat[0]), seat[1])
+
+    def test_positive_answer_count(self):
+        from src.day6_1 import positive_answer_count
+        input_list = [
+            'abc\n',
+            '\n',
+            'a\n',
+            'b\n',
+            'c\n',
+            '\n',
+            'ab\n',
+            'ac\n',
+            '\n',
+            'a\n',
+            'a\n',
+            'a\n',
+            'a\n',
+            '\n',
+            'b\n']
+        correct_answer = 11
+        self.assertTrue(positive_answer_count(input_list) == correct_answer)
