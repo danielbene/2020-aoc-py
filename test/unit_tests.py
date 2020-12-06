@@ -140,3 +140,24 @@ class Test(TestCase):
             'b\n']
         correct_answer = 11
         self.assertTrue(positive_answer_count(input_list) == correct_answer)
+
+    def test_positive_group_answers(self):
+        from src.day6_2 import positive_group_answers
+        input_list = [
+            'abc\n',
+            '\n',
+            'a\n',
+            'b\n',
+            'c\n',
+            '\n',
+            'ab\n',
+            'ac\n',
+            '\n',
+            'a\n',
+            'a\n',
+            'a\n',
+            'a\n',
+            '\n',
+            'b\n']
+        correct_answer = 6
+        self.assertTrue(positive_group_answers(input_list) == correct_answer)
