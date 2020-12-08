@@ -161,3 +161,33 @@ class Test(TestCase):
             'b\n']
         correct_answer = 6
         self.assertTrue(positive_group_answers(input_list) == correct_answer)
+
+    def test_get_accumulator_value(self):
+        from src.day8_1 import get_accumulator_value
+        input_list = [
+            'nop +0',
+            'acc +1',
+            'jmp +4',
+            'acc +3',
+            'jmp -3',
+            'acc -99',
+            'acc +1',
+            'jmp -4',
+            'acc +6']
+        correct_answer = 5
+        self.assertTrue(get_accumulator_value(input_list) == correct_answer)
+
+    def test_get_fixed_accumulator_value(self):
+        from src.day8_2 import get_fixed_accumulator_value
+        input_list = [
+            'nop +0',
+            'acc +1',
+            'jmp +4',
+            'acc +3',
+            'jmp -3',
+            'acc -99',
+            'acc +1',
+            'jmp -4',
+            'acc +6']
+        correct_answer = 8
+        self.assertTrue(get_fixed_accumulator_value(input_list) == correct_answer)
