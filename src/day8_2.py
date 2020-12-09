@@ -1,5 +1,4 @@
 from util import iohandler
-import time
 
 # --- solution ---
 
@@ -36,14 +35,10 @@ def loop_it(instruction_list):
     accumulator = 0
     exec_instruction_ids = list()
     instruction_pointer = 0
-    timeout = time.time() + 2
 
     while True:
         if instruction_pointer >= len(instruction_list):
             return accumulator
-
-        if time.time() > timeout:
-            return None
 
         instruction = instruction_list[instruction_pointer].split(' ')
         if instruction_pointer in exec_instruction_ids:

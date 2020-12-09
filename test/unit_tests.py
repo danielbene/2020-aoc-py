@@ -191,3 +191,57 @@ class Test(TestCase):
             'acc +6']
         correct_answer = 8
         self.assertTrue(get_fixed_accumulator_value(input_list) == correct_answer)
+
+    def test_get_invalid_record(self):
+        from src.day9_1 import get_invalid_record
+        input_list = [
+            '35\n',
+            '20\n',
+            '15\n',
+            '25\n',
+            '47\n',
+            '40\n',
+            '62\n',
+            '55\n',
+            '65\n',
+            '95\n',
+            '102\n',
+            '117\n',
+            '150\n',
+            '182\n',
+            '127\n',
+            '219\n',
+            '299\n',
+            '277\n',
+            '309\n',
+            '576\n']
+        correct_answer = 127
+        preamble_size = 5
+        self.assertTrue(get_invalid_record(input_list, preamble_size) == correct_answer)
+
+    def test_sum_of_contiguous_range_edges(self):
+        from src.day9_2 import sum_of_contiguous_range_edges
+        input_list = [
+            '35\n',
+            '20\n',
+            '15\n',
+            '25\n',
+            '47\n',
+            '40\n',
+            '62\n',
+            '55\n',
+            '65\n',
+            '95\n',
+            '102\n',
+            '117\n',
+            '150\n',
+            '182\n',
+            '127\n',
+            '219\n',
+            '299\n',
+            '277\n',
+            '309\n',
+            '576\n']
+        correct_answer = 62
+        preamble_size = 5
+        self.assertTrue(sum_of_contiguous_range_edges(input_list, preamble_size) == correct_answer)
