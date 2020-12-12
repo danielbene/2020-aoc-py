@@ -21,6 +21,7 @@ def get_occupied_seats_by_view(input_file):
     width, height = len(waiting_area[0]), len(waiting_area)
     stable, is_odd_round = False, True
 
+    # refactor with parallelism
     while not stable:
         for row_index in range(height):
             for position_index in range(width):
