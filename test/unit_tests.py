@@ -347,3 +347,19 @@ class Test(TestCase):
             self.assertEqual(get_adapter_arrangement_count(input1), 8)
         with self.subTest():
             self.assertEqual(get_adapter_arrangement_count(input2), 19208)
+
+    def test_get_occupied_seats(self):
+        from src.day11_1 import get_occupied_seats
+        input_list = [
+            'L.LL.LL.LL\n',
+            'LLLLLLL.LL\n',
+            'L.L.L..L..\n',
+            'LLLL.LL.LL\n',
+            'L.LL.LL.LL\n',
+            'L.LLLLL.LL\n',
+            '..L.L.....\n',
+            'LLLLLLLLLL\n',
+            'L.LLLLLL.L\n',
+            'L.LLLLL.LL\n']
+        correct_answer = 37
+        self.assertTrue(get_occupied_seats(input_list) == correct_answer)
