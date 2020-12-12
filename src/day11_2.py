@@ -15,7 +15,7 @@ directions = {
 }
 
 
-def get_occupied_seats(input_file):
+def get_occupied_seats_by_view(input_file):
     waiting_area = [list(row.strip()) for row in input_file]
     mutator = deepcopy(waiting_area)  # deepcopy needed if mutable inner object/collections present
     width, height = len(waiting_area[0]), len(waiting_area)
@@ -34,7 +34,7 @@ def get_occupied_seats(input_file):
                     if adj_population == 0:
                         mutator[row][pos] = '#'
                 else:
-                    if adj_population >= 4:
+                    if adj_population >= 5:
                         mutator[row][pos] = 'L'
 
         is_odd_round = not is_odd_round
@@ -49,13 +49,24 @@ def get_occupied_seats(input_file):
 def count_occupied_adjacency(waiting_area, row_index, position_index, width, height):
     occupied_count = 0
     for d in directions.values():
-        row = row_index + d[1]
-        pos = position_index + d[0]
-        if pos < 0 or pos >= width or row < 0 or row >= height:
-            continue
+        dimension_seat_found = False
+        distance = 1
 
-        if waiting_area[row][pos] == '#':
-            occupied_count += 1
+        while not dimension_seat_found:
+            row = row_index + d[1] * distance
+            pos = position_index + d[0] * distance
+
+            if pos < 0 or pos >= width or row < 0 or row >= height:
+                dimension_seat_found = True  # not really :)
+                continue
+
+            marker = waiting_area[row][pos]
+            if marker != '.':
+                dimension_seat_found = True
+                if marker == '#':
+                    occupied_count += 1
+
+            distance += 1
 
     return occupied_count
 
@@ -67,4 +78,4 @@ def count_in_collection(coll, ch):
 # --- solution ---
 
 if __name__ == '__main__':
-    iohandler.end(str(get_occupied_seats(iohandler.begin(__file__))))
+    iohandler.end(str(get_occupied_seats_by_view(iohandler.begin(__file__))))
