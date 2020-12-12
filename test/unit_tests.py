@@ -245,3 +245,137 @@ class Test(TestCase):
         correct_answer = 62
         preamble_size = 5
         self.assertTrue(sum_of_contiguous_range_edges(input_list, preamble_size) == correct_answer)
+
+    def test_get_multiplied_joltage_differences(self):
+        from src.day10_1 import get_multiplied_joltage_differences
+        input1 = [
+            '16\n',
+            '10\n',
+            '15\n',
+            '5\n',
+            '1\n',
+            '11\n',
+            '7\n',
+            '19\n',
+            '6\n',
+            '12\n',
+            '4\n']
+        input2 = [
+            '28\n',
+            '33\n',
+            '18\n',
+            '42\n',
+            '31\n',
+            '14\n',
+            '46\n',
+            '20\n',
+            '48\n',
+            '47\n',
+            '24\n',
+            '23\n',
+            '49\n',
+            '45\n',
+            '19\n',
+            '38\n',
+            '39\n',
+            '11\n',
+            '1\n',
+            '32\n',
+            '25\n',
+            '35\n',
+            '8\n',
+            '17\n',
+            '7\n',
+            '9\n',
+            '4\n',
+            '2\n',
+            '34\n',
+            '10\n',
+            '3\n']
+        with self.subTest():
+            self.assertEqual(get_multiplied_joltage_differences(input1), 7 * 5)
+        with self.subTest():
+            self.assertEqual(get_multiplied_joltage_differences(input2), 22 * 10)
+
+    def test_get_adapter_arrangement_count(self):
+        from src.day10_2 import get_adapter_arrangement_count
+        input1 = [
+            '16\n',
+            '10\n',
+            '15\n',
+            '5\n',
+            '1\n',
+            '11\n',
+            '7\n',
+            '19\n',
+            '6\n',
+            '12\n',
+            '4\n']
+        input2 = [
+            '28\n',
+            '33\n',
+            '18\n',
+            '42\n',
+            '31\n',
+            '14\n',
+            '46\n',
+            '20\n',
+            '48\n',
+            '47\n',
+            '24\n',
+            '23\n',
+            '49\n',
+            '45\n',
+            '19\n',
+            '38\n',
+            '39\n',
+            '11\n',
+            '1\n',
+            '32\n',
+            '25\n',
+            '35\n',
+            '8\n',
+            '17\n',
+            '7\n',
+            '9\n',
+            '4\n',
+            '2\n',
+            '34\n',
+            '10\n',
+            '3\n']
+        with self.subTest():
+            self.assertEqual(get_adapter_arrangement_count(input1), 8)
+        with self.subTest():
+            self.assertEqual(get_adapter_arrangement_count(input2), 19208)
+
+    def test_get_occupied_seats(self):
+        from src.day11_1 import get_occupied_seats
+        input_list = [
+            'L.LL.LL.LL\n',
+            'LLLLLLL.LL\n',
+            'L.L.L..L..\n',
+            'LLLL.LL.LL\n',
+            'L.LL.LL.LL\n',
+            'L.LLLLL.LL\n',
+            '..L.L.....\n',
+            'LLLLLLLLLL\n',
+            'L.LLLLLL.L\n',
+            'L.LLLLL.LL\n']
+        correct_answer = 37
+        self.assertTrue(get_occupied_seats(input_list) == correct_answer)
+
+    def test_get_occupied_seats_by_view(self):
+        from src.day11_2 import get_occupied_seats_by_view
+        input_list = [
+            'L.LL.LL.LL\n',
+            'LLLLLLL.LL\n',
+            'L.L.L..L..\n',
+            'LLLL.LL.LL\n',
+            'L.LL.LL.LL\n',
+            'L.LLLLL.LL\n',
+            '..L.L.....\n',
+            'LLLLLLLLLL\n',
+            'L.LLLLLL.L\n',
+            'L.LLLLL.LL\n']
+        correct_answer = 26
+        self.assertTrue(get_occupied_seats_by_view(input_list) == correct_answer)
