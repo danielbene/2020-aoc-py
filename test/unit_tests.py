@@ -379,3 +379,11 @@ class Test(TestCase):
             'L.LLLLL.LL\n']
         correct_answer = 26
         self.assertTrue(get_occupied_seats_by_view(input_list) == correct_answer)
+
+    def test_get_earliest_bus_id(self):
+        from src.day13_1 import get_earliest_bus_id
+        input_list = [
+            '939\n',
+            '7,13,x,x,59,x,31,19\n']
+        correct_answer = 295
+        self.assertTrue(get_earliest_bus_id(input_list) == correct_answer)
