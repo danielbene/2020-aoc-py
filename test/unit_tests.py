@@ -379,3 +379,26 @@ class Test(TestCase):
             'L.LLLLL.LL\n']
         correct_answer = 26
         self.assertTrue(get_occupied_seats_by_view(input_list) == correct_answer)
+
+    def test_get_earliest_bus_id(self):
+        from src.day13_1 import get_earliest_bus_id
+        input_list = [
+            '939\n',
+            '7,13,x,x,59,x,31,19\n']
+        correct_answer = 295
+        self.assertTrue(get_earliest_bus_id(input_list) == correct_answer)
+
+    def test_get_earliest_matching_departs(self):
+        from src.day13_2 import get_earliest_matching_departs
+        with self.subTest():
+            self.assertEqual(get_earliest_matching_departs('7,13,x,x,59,x,31,19'), 1068781)
+        with self.subTest():
+            self.assertEqual(get_earliest_matching_departs('17,x,13,19'), 3417)
+        with self.subTest():
+            self.assertEqual(get_earliest_matching_departs('67,7,59,61'), 754018)
+        with self.subTest():
+            self.assertEqual(get_earliest_matching_departs('67,x,7,59,61'), 779210)
+        with self.subTest():
+            self.assertEqual(get_earliest_matching_departs('67,7,x,59,61'), 1261476)
+        with self.subTest():
+            self.assertEqual(get_earliest_matching_departs('1789,37,47,1889'), 1202161486)
