@@ -15,6 +15,7 @@ def multiplied_corner_tiles(input_file):
         elif row != '':
             tile.rows.append(row)
         else:
+            # double nl at eof is important
             terrain.tiles.append(tile)
 
     return terrain.find_corners()
