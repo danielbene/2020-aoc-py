@@ -6,27 +6,31 @@ import re
 
 def multiplied_corner_tiles(input_file):
     data_list = [str(row.strip()) for row in input_file]
-    title = re.compile("^Tile [0-9]{4}:$")
-    tiles_obj = Tiles()
+    terrain = Terrain()
 
     tile = None
     for row in data_list:
-        if title.match(row):
-            if tile is not None:
-                tiles_obj.tiles.append(tile)
+        if re.match(r"^Tile [0-9]{4}:$", row):
             tile = Tile(int(row.split(' ')[1][:-1]))
         elif row != '':
             tile.rows.append(row)
+        else:
+            terrain.tiles.append(tile)
 
-    tiles_obj.find_corners()
-    return ''
+    return terrain.find_corners()
 
 
-class Tiles:
+def mirror(text):
+    return text[::-1]
+
+
+# not my cleanest solution, but can be extended for part2 if needed
+class Terrain:
     left_sides = list()
     right_sides = list()
     top_sides = list()
     bottom_sides = list()
+    all_sides_with_rotation = list()
 
     def __init__(self):
         self.tiles = list()
@@ -38,25 +42,31 @@ class Tiles:
             self.top_sides.append(tile.get_top())
             self.bottom_sides.append(tile.get_bottom())
 
+        # extend takes out the list elements, and adds them, while append will put the list object in
+        self.all_sides_with_rotation.extend(self.left_sides + self.right_sides
+                                            + self.top_sides + self.bottom_sides)
+        self.all_sides_with_rotation.extend(
+            [mirror(side) for side in self.all_sides_with_rotation])
+
     def find_corners(self):
+        multiplied_ids = 1
         self.collect_sides()
-        print(self.left_sides)
-        print(self.right_sides)
         for tile in self.tiles:
             unmatched_sides = 0
-            if self.left_sides.count(tile.get_right_side()) == 0:
+            if self.all_sides_with_rotation.count(tile.get_left_side()) == 1:
                 unmatched_sides += 1
-            if self.right_sides.count(tile.get_left_side()) == 0:
+            if self.all_sides_with_rotation.count(tile.get_right_side()) == 1:
                 unmatched_sides += 1
-            if self.top_sides.count(tile.get_bottom()) == 0:
+            if self.all_sides_with_rotation.count(tile.get_top()) == 1:
                 unmatched_sides += 1
-            if self.bottom_sides.count(tile.get_top()) == 0:
+            if self.all_sides_with_rotation.count(tile.get_bottom()) == 1:
                 unmatched_sides += 1
 
             if unmatched_sides > 1:
-                print(tile.tile_id)
-                print(unmatched_sides)
+                multiplied_ids *= tile.tile_id
                 tile.is_corner = True
+
+        return multiplied_ids
 
 
 class Tile:
