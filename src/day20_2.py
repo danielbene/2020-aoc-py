@@ -1,4 +1,5 @@
 from util import iohandler
+from math import sqrt
 import re
 
 # --- solution ---
@@ -18,38 +19,56 @@ def get_monsterlessness(input_file):
             # double nl at eof is important
             terrain.tiles.append(tile)
 
-    terrain.tiles[0].print_tile()
-    terrain.tiles[0].remove_borders()
-    print('---')
-    terrain.tiles[0].print_tile()
+    terrain.get_terrain_width()
     return ''
 
 
-def mirror(text):
+def mirror_sting(text):
     return text[::-1]
+
+
+def rotate_matrix(matrix):
+    return zip(*matrix[::-1])
 
 
 class Terrain:
     def __init__(self):
         self.tiles = list()
-        self.terrain_tile = list()
+        self.assembled = list()
+        self.dimensions = 0
 
-    def build_terrain(self):
-        # contrariwise of part1 matrix positions is must have here
+    def get_terrain_width(self):
+        self.dimensions = int(sqrt(len(self.tiles)))
+
+    def rubic(self):
         pass
 
 
 class Tile:
-    is_corner = False
-
     def __init__(self, tile_id):
         self.tile_id = tile_id
         self.rows = list()
 
-    def remove_borders(self):
-        del self.rows[0]
-        del self.rows[len(self.rows) - 1]
-        self.rows = [row[1:len(row) - 1] for row in self.rows]
+    def get_left_side(self):
+        ret = ''
+        for row in self.rows:
+            ret += row[0]
+        return ret
+
+    def get_right_side(self):
+        ret = ''
+        for row in self.rows:
+            ret += row[len(row) - 1]
+        return ret
+
+    def get_top(self):
+        return self.rows[0]
+
+    def get_bottom(self):
+        return self.rows[len(self.rows) - 1]
+
+    def rotate_clockwise(self):
+        self.rows = rotate_matrix(self.rows)
 
     def print_tile(self):
         for row in self.rows:
