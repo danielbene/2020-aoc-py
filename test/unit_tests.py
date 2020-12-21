@@ -402,3 +402,13 @@ class Test(TestCase):
             self.assertEqual(get_earliest_matching_departs('67,7,x,59,61'), 1261476)
         with self.subTest():
             self.assertEqual(get_earliest_matching_departs('1789,37,47,1889'), 1202161486)
+
+    def test_possible_allergens(self):
+        from src.day21_1 import non_allergen_ingredient_count
+        input_list = [
+            'mxmxvkd kfcds sqjhc nhms (contains dairy, fish)\n',
+            'trh fvjkl sbzzf mxmxvkd (contains dairy)\n',
+            'sqjhc fvjkl (contains soy)\n',
+            'sqjhc mxmxvkd sbzzf (contains fish)\n']
+        correct_answer = 5
+        self.assertEqual(non_allergen_ingredient_count(input_list), correct_answer)
