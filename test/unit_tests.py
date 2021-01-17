@@ -176,3 +176,244 @@ class Test(TestCase):
             'dotted black bags contain no other bags.\n']
         correct_answer = 4
         self.assertTrue(containing_bag_num(input_list) == correct_answer)
+
+    def test_get_accumulator_value(self):
+        from src.day8_1 import get_accumulator_value
+        input_list = [
+            'nop +0',
+            'acc +1',
+            'jmp +4',
+            'acc +3',
+            'jmp -3',
+            'acc -99',
+            'acc +1',
+            'jmp -4',
+            'acc +6']
+        correct_answer = 5
+        self.assertTrue(get_accumulator_value(input_list) == correct_answer)
+
+    def test_get_fixed_accumulator_value(self):
+        from src.day8_2 import get_fixed_accumulator_value
+        input_list = [
+            'nop +0',
+            'acc +1',
+            'jmp +4',
+            'acc +3',
+            'jmp -3',
+            'acc -99',
+            'acc +1',
+            'jmp -4',
+            'acc +6']
+        correct_answer = 8
+        self.assertTrue(get_fixed_accumulator_value(input_list) == correct_answer)
+
+    def test_get_invalid_record(self):
+        from src.day9_1 import get_invalid_record
+        input_list = [
+            '35\n',
+            '20\n',
+            '15\n',
+            '25\n',
+            '47\n',
+            '40\n',
+            '62\n',
+            '55\n',
+            '65\n',
+            '95\n',
+            '102\n',
+            '117\n',
+            '150\n',
+            '182\n',
+            '127\n',
+            '219\n',
+            '299\n',
+            '277\n',
+            '309\n',
+            '576\n']
+        correct_answer = 127
+        preamble_size = 5
+        self.assertTrue(get_invalid_record(input_list, preamble_size) == correct_answer)
+
+    def test_sum_of_contiguous_range_edges(self):
+        from src.day9_2 import sum_of_contiguous_range_edges
+        input_list = [
+            '35\n',
+            '20\n',
+            '15\n',
+            '25\n',
+            '47\n',
+            '40\n',
+            '62\n',
+            '55\n',
+            '65\n',
+            '95\n',
+            '102\n',
+            '117\n',
+            '150\n',
+            '182\n',
+            '127\n',
+            '219\n',
+            '299\n',
+            '277\n',
+            '309\n',
+            '576\n']
+        correct_answer = 62
+        preamble_size = 5
+        self.assertTrue(sum_of_contiguous_range_edges(input_list, preamble_size) == correct_answer)
+
+    def test_get_multiplied_joltage_differences(self):
+        from src.day10_1 import get_multiplied_joltage_differences
+        input1 = [
+            '16\n',
+            '10\n',
+            '15\n',
+            '5\n',
+            '1\n',
+            '11\n',
+            '7\n',
+            '19\n',
+            '6\n',
+            '12\n',
+            '4\n']
+        input2 = [
+            '28\n',
+            '33\n',
+            '18\n',
+            '42\n',
+            '31\n',
+            '14\n',
+            '46\n',
+            '20\n',
+            '48\n',
+            '47\n',
+            '24\n',
+            '23\n',
+            '49\n',
+            '45\n',
+            '19\n',
+            '38\n',
+            '39\n',
+            '11\n',
+            '1\n',
+            '32\n',
+            '25\n',
+            '35\n',
+            '8\n',
+            '17\n',
+            '7\n',
+            '9\n',
+            '4\n',
+            '2\n',
+            '34\n',
+            '10\n',
+            '3\n']
+        with self.subTest():
+            self.assertEqual(get_multiplied_joltage_differences(input1), 7 * 5)
+        with self.subTest():
+            self.assertEqual(get_multiplied_joltage_differences(input2), 22 * 10)
+
+    def test_get_adapter_arrangement_count(self):
+        from src.day10_2 import get_adapter_arrangement_count
+        input1 = [
+            '16\n',
+            '10\n',
+            '15\n',
+            '5\n',
+            '1\n',
+            '11\n',
+            '7\n',
+            '19\n',
+            '6\n',
+            '12\n',
+            '4\n']
+        input2 = [
+            '28\n',
+            '33\n',
+            '18\n',
+            '42\n',
+            '31\n',
+            '14\n',
+            '46\n',
+            '20\n',
+            '48\n',
+            '47\n',
+            '24\n',
+            '23\n',
+            '49\n',
+            '45\n',
+            '19\n',
+            '38\n',
+            '39\n',
+            '11\n',
+            '1\n',
+            '32\n',
+            '25\n',
+            '35\n',
+            '8\n',
+            '17\n',
+            '7\n',
+            '9\n',
+            '4\n',
+            '2\n',
+            '34\n',
+            '10\n',
+            '3\n']
+        with self.subTest():
+            self.assertEqual(get_adapter_arrangement_count(input1), 8)
+        with self.subTest():
+            self.assertEqual(get_adapter_arrangement_count(input2), 19208)
+
+    def test_get_occupied_seats(self):
+        from src.day11_1 import get_occupied_seats
+        input_list = [
+            'L.LL.LL.LL\n',
+            'LLLLLLL.LL\n',
+            'L.L.L..L..\n',
+            'LLLL.LL.LL\n',
+            'L.LL.LL.LL\n',
+            'L.LLLLL.LL\n',
+            '..L.L.....\n',
+            'LLLLLLLLLL\n',
+            'L.LLLLLL.L\n',
+            'L.LLLLL.LL\n']
+        correct_answer = 37
+        self.assertTrue(get_occupied_seats(input_list) == correct_answer)
+
+    def test_get_occupied_seats_by_view(self):
+        from src.day11_2 import get_occupied_seats_by_view
+        input_list = [
+            'L.LL.LL.LL\n',
+            'LLLLLLL.LL\n',
+            'L.L.L..L..\n',
+            'LLLL.LL.LL\n',
+            'L.LL.LL.LL\n',
+            'L.LLLLL.LL\n',
+            '..L.L.....\n',
+            'LLLLLLLLLL\n',
+            'L.LLLLLL.L\n',
+            'L.LLLLL.LL\n']
+        correct_answer = 26
+        self.assertTrue(get_occupied_seats_by_view(input_list) == correct_answer)
+
+    def test_get_earliest_bus_id(self):
+        from src.day13_1 import get_earliest_bus_id
+        input_list = [
+            '939\n',
+            '7,13,x,x,59,x,31,19\n']
+        correct_answer = 295
+        self.assertTrue(get_earliest_bus_id(input_list) == correct_answer)
+
+    def test_get_earliest_matching_departs(self):
+        from src.day13_2 import get_earliest_matching_departs
+        with self.subTest():
+            self.assertEqual(get_earliest_matching_departs('7,13,x,x,59,x,31,19'), 1068781)
+        with self.subTest():
+            self.assertEqual(get_earliest_matching_departs('17,x,13,19'), 3417)
+        with self.subTest():
+            self.assertEqual(get_earliest_matching_departs('67,7,59,61'), 754018)
+        with self.subTest():
+            self.assertEqual(get_earliest_matching_departs('67,x,7,59,61'), 779210)
+        with self.subTest():
+            self.assertEqual(get_earliest_matching_departs('67,7,x,59,61'), 1261476)
+        with self.subTest():
+            self.assertEqual(get_earliest_matching_departs('1789,37,47,1889'), 1202161486)
