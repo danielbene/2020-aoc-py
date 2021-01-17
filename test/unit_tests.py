@@ -175,7 +175,7 @@ class Test(TestCase):
             'faded blue bags contain no other bags.\n',
             'dotted black bags contain no other bags.\n']
         correct_answer = 4
-        self.assertTrue(containing_bag_num(input_list) == correct_answer)
+        self.assertEqual(containing_bag_num(input_list), correct_answer)
 
     def test_get_accumulator_value(self):
         from src.day8_1 import get_accumulator_value
