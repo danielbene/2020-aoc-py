@@ -420,6 +420,16 @@ class Test(TestCase):
         correct_answer = 26
         self.assertTrue(get_occupied_seats_by_view(input_list) == correct_answer)
 
+    def test_get_manhattan_distance(self):
+        from src.day12_1 import get_manhattan_distance
+        input_list = [
+            'F10\n',
+            'N3\n',
+            'F7\n',
+            'R90\n',
+            'F11\n']
+        self.assertEqual(get_manhattan_distance(input_list), 25)
+
     def test_get_earliest_bus_id(self):
         from src.day13_1 import get_earliest_bus_id
         input_list = [
