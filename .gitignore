@@ -44,6 +44,7 @@ htmlcov/
 .coverage
 .coverage.*
 .cache
+.noseids
 nosetests.xml
 coverage.xml
 *.cover
@@ -128,5 +129,6 @@ dmypy.json
 # Pyre type checker
 .pyre/
 
-# IDEA
+# IDE
 .idea/
+.vscode/

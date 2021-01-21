@@ -1,6 +1,7 @@
 from util import iohandler
 from enum import Enum
 
+
 # --- solution ---
 
 position = [0, 0]  # basic graph dimensions - north, east are pos, south, and west are neg
@@ -17,8 +18,6 @@ dir_vectors = {
 def get_manhattan_distance_with_waypoint(input_actions):
     for action in input_actions:
         do_some_action(action.strip())
-        print(position)
-        print(waypoint)
 
     return abs(position[0]) + abs(position[1])
 
@@ -37,36 +36,19 @@ def do_some_action(act):
     elif action == 'W':
         waypoint[1] -= value
     elif action == 'L':
-        turns = value / 90
-        if (facing == 1 and turns > 2) or (facing == 2 and turns < 3) or\
-                (facing == 3 and turns > 2) or (facing == 4 and turns < 3):
-            waypoint[0] *= -1
-            waypoint[1] *= -1
-
-        if turns % 2 != 0:
-            waypoint[0], waypoint[1] = waypoint[1], waypoint[0]
-
-        facing -= int(turns)
-        if facing < 1:
-            facing += 4
-
+        rotate_x_times(int(value/90), 'cw')
     elif action == 'R':
-        turns = value / 90
-        if (facing == 1 and turns > 2) or (facing == 2 and turns < 3) or \
-                (facing == 3 and turns > 2) or (facing == 4 and turns < 3):
-            waypoint[0] *= -1
-            waypoint[1] *= -1
-
-        if turns % 2 != 0:
-            waypoint[0], waypoint[1] = waypoint[1], waypoint[0]
-
-        facing += int(turns)
-        if facing > 4:
-            facing -= 4
-
+        rotate_x_times(int(value/90), 'ccw')
     elif action == 'F':
         position[0] += waypoint[0] * value
         position[1] += waypoint[1] * value
+
+
+def rotate_x_times(counter, direction):
+    d = 0 if direction == 'cw' else 1
+    for _ in range(counter):
+        waypoint[d] *= -1
+        waypoint[0], waypoint[1] = waypoint[1], waypoint[0]
 
 
 # NOP - refact later
