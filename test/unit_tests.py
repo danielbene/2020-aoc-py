@@ -1,4 +1,4 @@
-#pylint: skip-file
+# pylint: skip-file
 from unittest import TestCase
 
 
@@ -474,3 +474,12 @@ class Test(TestCase):
             'mem[7] = 101\n',
             'mem[8] = 0\n']
         self.assertEqual(165, sum_of_memory(input_list))
+
+    def test_sum_of_memory_with_floating_bits(self):
+        from src.day14_2 import sum_of_memory_with_floating_bits
+        input_list = [
+            'mask = 000000000000000000000000000000X1001X\n',
+            'mem[42] = 100\n',
+            'mask = 00000000000000000000000000000000X0XX\n',
+            'mem[26] = 1\n']
+        self.assertEqual(208, sum_of_memory_with_floating_bits(input_list))

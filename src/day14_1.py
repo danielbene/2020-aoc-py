@@ -1,11 +1,12 @@
 from util import iohandler
-#import numpy as np  # this is where I found out about numpy o_O
+# import numpy as np  # this is where I found out about numpy o_O
 
 # --- solution ---
 
 # NOTE: VSCode runtimes looks slower than PyCharm's
 # for reference only
-# memory = np.zeros(36, dtype='U36')  # str type is only 1 char | U36 = 36 unicode char
+# str type is only 1 char | U36 = 36 unicode char
+# memory = np.zeros(36, dtype='U36')
 
 
 def sum_of_memory(input_file):
@@ -18,13 +19,15 @@ def sum_of_memory(input_file):
         if record[0] == 'mask':
             current_mask = record[1]
         else:
-            mem_value = "{0:036b}".format(int(record[1]))  # really nice way to format and padd to binary
+            # really nice way to format and padd to binary
+            mem_value = "{0:036b}".format(int(record[1]))
             memory.update({record[0][3:-1]: str_mask(mem_value, current_mask)})
 
     for mem in memory.values():
         memory_sum += int(mem, 2)
 
     return memory_sum
+
 
 def str_mask(value, mask):
     masked = ''
