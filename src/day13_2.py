@@ -7,7 +7,6 @@ from functools import reduce
 def init(input_file):
     return [str(row.strip()) for row in input_file][1]
 
-
 # based on Chinese Remainder Theory - i dont like math theories :,)
 # https://fangya.medium.com/chinese-remainder-theorem-with-python-a483de81fbb8
 def get_earliest_matching_departs(data_list):
