@@ -465,3 +465,12 @@ class Test(TestCase):
             self.assertEqual(get_earliest_matching_departs('67,7,x,59,61'), 1261476)
         with self.subTest():
             self.assertEqual(get_earliest_matching_departs('1789,37,47,1889'), 1202161486)
+
+    def test_sum_of_memory(self):
+        from src.day14_1 import sum_of_memory
+        input_list = [
+            'mask = XXXXXXXXXXXXXXXXXXXXXXXXXXXXX1XXXX0X\n',
+            'mem[8] = 11\n',
+            'mem[7] = 101\n',
+            'mem[8] = 0\n']
+        self.assertEqual(165, sum_of_memory(input_list))
