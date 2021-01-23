@@ -483,3 +483,20 @@ class Test(TestCase):
             'mask = 00000000000000000000000000000000X0XX\n',
             'mem[26] = 1\n']
         self.assertEqual(208, sum_of_memory_with_floating_bits(input_list))
+
+    def test_memory_game_position_value(self):
+        from src.day15_1 import memory_game_position_value
+        with self.subTest():
+            self.assertEqual(memory_game_position_value('0,3,6'), 436)
+        with self.subTest():
+            self.assertEqual(memory_game_position_value('1,3,2'), 1)
+        with self.subTest():
+            self.assertEqual(memory_game_position_value('2,1,3'), 10)
+        with self.subTest():
+            self.assertEqual(memory_game_position_value('1,2,3'), 27)
+        with self.subTest():
+            self.assertEqual(memory_game_position_value('2,3,1'), 78)
+        with self.subTest():
+            self.assertEqual(memory_game_position_value('3,2,1'), 438)
+        with self.subTest():
+            self.assertEqual(memory_game_position_value('3,1,2'), 1836)
