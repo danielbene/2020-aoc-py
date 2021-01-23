@@ -500,3 +500,20 @@ class Test(TestCase):
             self.assertEqual(memory_game_position_value('3,2,1'), 438)
         with self.subTest():
             self.assertEqual(memory_game_position_value('3,1,2'), 1836)
+
+    def test_big_memory_game_position_value(self):
+        from src.day15_2 import big_memory_game_position_value
+        with self.subTest():
+            self.assertEqual(big_memory_game_position_value('0,3,6'), 175594)
+        with self.subTest():
+            self.assertEqual(big_memory_game_position_value('1,3,2'), 2578)
+        with self.subTest():
+            self.assertEqual(big_memory_game_position_value('2,1,3'), 3544142)
+        with self.subTest():
+            self.assertEqual(big_memory_game_position_value('1,2,3'), 261214)
+        with self.subTest():
+            self.assertEqual(big_memory_game_position_value('2,3,1'), 6895259)
+        with self.subTest():
+            self.assertEqual(big_memory_game_position_value('3,2,1'), 18)
+        with self.subTest():
+            self.assertEqual(big_memory_game_position_value('3,1,2'), 362)
