@@ -1,9 +1,10 @@
 from util import iohandler
-# import numpy as np  # this is where I found out about numpy o_O
+# import numpy as np  # this is where I found out about numpy efficiency o_O
 
 # --- solution ---
 
 # NOTE: VSCode runtimes looks slower than PyCharm's
+
 # for reference only
 # str type is only 1 char | U36 = 36 unicode char
 # memory = np.zeros(36, dtype='U36')
@@ -12,21 +13,15 @@ from util import iohandler
 def sum_of_memory(input_file):
     memory = dict()
     current_mask = ''
-    memory_sum = 0
 
-    for line in input_file:
-        record = line.strip().split(' = ')
-        if record[0] == 'mask':
-            current_mask = record[1]
+    for cmd, value in [line.strip().split(' = ') for line in input_file]:
+        if cmd == 'mask':
+            current_mask = value
         else:
-            # really nice way to format and padd to binary
-            mem_value = "{0:036b}".format(int(record[1]))
-            memory.update({record[0][3:-1]: str_mask(mem_value, current_mask)})
+            mem_value = bin(int(value))[2:].zfill(36)
+            memory.update({cmd[3:-1]: int(str_mask(mem_value, current_mask), 2)})
 
-    for mem in memory.values():
-        memory_sum += int(mem, 2)
-
-    return memory_sum
+    return sum(memory.values())
 
 
 def str_mask(value, mask):

@@ -7,30 +7,24 @@ from itertools import combinations
 def sum_of_memory_with_floating_bits(input_file):
     memory = dict()
     current_mask = ''
-    memory_sum = 0
 
-    for line in input_file:
-        record = line.strip().split(' = ')
-
-        if record[0] == 'mask':
-            current_mask = record[1]
+    for cmd, value in [line.strip().split(' = ') for line in input_file]:
+        if cmd == 'mask':
+            current_mask = value
         else:
-            memory_index = record[0][4:-1]
-            bin_address = "{0:036b}".format(int(memory_index))
+            memory_index = cmd[4:-1]
+            bin_address = bin(int(memory_index))[2:].zfill(36)
 
             for address in str_mask(bin_address, current_mask):
-                memory.update({address: record[1]})
+                memory.update({address: int(value)})
 
-    for mem in memory.values():
-        memory_sum += int(mem)
-
-    return memory_sum
+    return sum(memory.values())
 
 
 # TODO: optimize this
 def str_mask(value, mask):
     masked = ''
-    floating_bit_cnt = 0
+    floating_bit_cnt = mask.count('X')
     floating_addresses = set()
 
     for index in range(36):
@@ -41,7 +35,6 @@ def str_mask(value, mask):
             masked += '1'
         elif bit == 'X':
             masked += 'X'
-            floating_bit_cnt += 1
 
     if floating_bit_cnt != 0:
         comb_array = []
